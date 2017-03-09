@@ -1,4 +1,6 @@
 <resources>
     <item name="click_time" type="id" />
     <string name="app_name">AndroidBase</string>
+    <string name="title_activity_second">SecondActivity</string>
+    <string name="action_settings">Settings</string>
 </resources>

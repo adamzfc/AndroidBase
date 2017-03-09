@@ -3,9 +3,12 @@ package com.adamzfc.androidbase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 
+import com.adamzfc.router.ActivityRouter;
 import com.adamzfc.router.annotation.Router;
 
+import common.annotation.SingleClick;
 import common.constants.IntentC;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
@@ -19,6 +22,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ActivityRouter.bind(this);
+        findViewById(R.id.imageView).setOnClickListener(new View.OnClickListener() {
+            @SingleClick
+            @Override
+            public void onClick(View v) {
+                ActivityRouter.go(MainActivity.this, IntentC.SECOND, null, v);
+            }
+        });
     }
 
     @Override

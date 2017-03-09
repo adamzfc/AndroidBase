@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
-apply plugin: 'android-aspectjx'
+//apply plugin: 'android-aspectjx'
+apply plugin: 'aspectj-plugin'
 
 android {
     compileSdkVersion 25
@@ -20,20 +21,21 @@ android {
     }
 }
 
-aspectjx {
-    excludeJarFilter '.jar'
-}
+//aspectjx {
+//    excludeJarFilter '.jar'
+//}
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.0.1'
-    testCompile 'junit:junit:4.12'
     compile project(':base')
+    compile 'com.android.support:appcompat-v7:25.0.1'
     compile 'org.aspectj:aspectjrt:1.8.9'
     compile 'com.github.adamzfc:AndroidUtil:0.0.1'
     compile 'com.adamzfc.router:api:0.0.1'
+    compile 'com.android.support:design:25.0.1'
+    testCompile 'junit:junit:4.12'
     annotationProcessor 'com.adamzfc.router:compiler:0.0.1'
 }

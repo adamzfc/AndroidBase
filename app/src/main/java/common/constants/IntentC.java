@@ -12,4 +12,9 @@ public class IntentC {
     public static final String MAIN = "main";
 
 
+    /**
+     * @see com.adamzfc.androidbase.SecondActivity
+     */
+    public static final String SECOND = "second";
+
 }

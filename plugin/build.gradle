@@ -1,0 +1,49 @@
+apply plugin: 'groovy'
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+    compile 'com.android.tools.build:gradle:2.3.0'
+    compile 'org.aspectj:aspectjtools:1.8.9'
+    compile 'org.aspectj:aspectjrt:1.8.9'
+}
+def libraryGroupId = 'com.adamzfc.base'
+def libraryArtifactId = 'aspectj-plugin'
+def libraryVersion = '0.0.1'
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId libraryGroupId
+            artifactId libraryArtifactId
+            version libraryVersion
+            from components.java
+        }
+    }
+}
+
+bintray {
+    user = "${bintray_user}"
+    key = "${bintray_key}"
+    publications = ['maven']
+    pkg {
+        repo = 'maven'
+        name = 'aspectj-plugin'
+        desc = 'AndroidBase Aspectj Plugin'
+        issueTrackerUrl = 'https://github.com/adamzfc/AndroidBase/issues'
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/adamzfc/AndroidBase'
+        websiteUrl = 'https://github.com/adamzfc/AndroidBase'
+        version {
+            name = libraryVersion
+            desc = libraryVersion
+            vcsTag = 'v' + libraryVersion
+        }
+    }
+}
+
+repositories {
+    jcenter()
+}
