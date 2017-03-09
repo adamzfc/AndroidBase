@@ -3,7 +3,7 @@ apply plugin: 'android-aspectjx'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "24.0.1"
+    buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.adamzfc.androidbase"
         minSdkVersion 14
@@ -34,4 +34,6 @@ dependencies {
     compile project(':base')
     compile 'org.aspectj:aspectjrt:1.8.9'
     compile 'com.github.adamzfc:AndroidUtil:0.0.1'
+    compile 'com.adamzfc.router:api:0.0.1'
+    annotationProcessor 'com.adamzfc.router:compiler:0.0.1'
 }

@@ -6,4 +6,10 @@ package common.constants;
  */
 
 public class IntentC {
+    /**
+     * @see com.adamzfc.androidbase.MainActivity
+     */
+    public static final String MAIN = "main";
+
+
 }

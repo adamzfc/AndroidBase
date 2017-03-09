@@ -1,16 +1,18 @@
 package com.adamzfc.androidbase;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.adamzfc.router.annotation.Router;
+
+import common.constants.IntentC;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-
+@Router(IntentC.MAIN)
 public class MainActivity extends AppCompatActivity {
 
     @Override
