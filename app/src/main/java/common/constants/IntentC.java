@@ -1,5 +1,7 @@
 package common.constants;
 
+import com.adamzfc.androidbase.main.MainActivity;
+
 /**
  * Created by adamzfc on 3/7/17.
  * intent contants
@@ -7,7 +9,7 @@ package common.constants;
 
 public class IntentC {
     /**
-     * @see com.adamzfc.androidbase.MainActivity
+     * @see MainActivity
      */
     public static final String MAIN = "main";
 
