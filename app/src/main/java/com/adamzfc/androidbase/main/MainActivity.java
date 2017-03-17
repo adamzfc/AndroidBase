@@ -1,21 +1,14 @@
 package com.adamzfc.androidbase.main;
 
-import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 
 import com.adamzfc.androidbase.R;
-import com.adamzfc.base.BaseHolder;
-import com.adamzfc.router.ActivityRouter;
 import com.adamzfc.router.annotation.Router;
 
 import javax.inject.Inject;
 
 import common.CommonAcitivity;
-import common.annotation.SingleClick;
 import common.constants.IntentC;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
