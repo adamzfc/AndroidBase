@@ -19,4 +19,9 @@ public class IntentC {
      */
     public static final String SECOND = "second";
 
+    /**
+     * @see com.adamzfc.androidbase.IndexActivity
+     */
+    public static final String INDEX = "index";
+
 }
