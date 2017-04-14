@@ -10,6 +10,9 @@ import com.adamzfc.base.BaseRecyclerAdapter;
 import com.adamzfc.base.BaseRecyclerHolder;
 import com.adamzfc.router.annotation.Router;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,10 +20,12 @@ import common.CommonAcitivity;
 import common.constants.IntentC;
 
 /**
+ * Index
  * Created by adamzfc on 4/14/17.
  */
 @Router(IntentC.INDEX)
 public class IndexActivity extends CommonAcitivity {
+    Logger logger = LoggerFactory.getLogger(IndexActivity.class);
     @Override
     protected void initView() {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
@@ -31,7 +36,10 @@ public class IndexActivity extends CommonAcitivity {
             protected void bindData(BaseRecyclerHolder holder, int position, IndexItem indexItem) {
                 Button button = holder.getButton(R.id.button);
                 button.setText(indexItem.getName());
-                button.setOnClickListener(v -> startActivity(new Intent(IndexActivity.this, indexItem.getClz())));
+                button.setOnClickListener(v -> {
+                    logger.debug("startActivity {}", indexItem.getClz());
+                    startActivity(new Intent(IndexActivity.this, indexItem.getClz()));
+                });
             }
 
             @Override
