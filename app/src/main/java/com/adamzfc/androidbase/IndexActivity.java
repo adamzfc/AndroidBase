@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 
+import com.adamzfc.androidbase.main.MainActivity;
 import com.adamzfc.androidbase.test.event.TestEventActivity;
 import com.adamzfc.base.BaseRecyclerAdapter;
 import com.adamzfc.base.BaseRecyclerHolder;
@@ -30,6 +31,7 @@ public class IndexActivity extends CommonAcitivity {
     protected void initView() {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         List<IndexItem> datas = new ArrayList<>();
+        datas.add(new IndexItem("Retrofit测试", MainActivity.class));
         datas.add(new IndexItem("Activity事件派发测试", TestEventActivity.class));
         BaseRecyclerAdapter<IndexItem> adapter = new BaseRecyclerAdapter<IndexItem>(this, datas) {
             @Override
@@ -37,7 +39,7 @@ public class IndexActivity extends CommonAcitivity {
                 Button button = holder.getButton(R.id.button);
                 button.setText(indexItem.getName());
                 button.setOnClickListener(v -> {
-                    logger.debug("startActivity {}", indexItem.getClz());
+                    logger.debug("startActivity {} {}", indexItem.getName(), indexItem.getClz());
                     startActivity(new Intent(IndexActivity.this, indexItem.getClz()));
                 });
             }
