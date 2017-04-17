@@ -27,6 +27,7 @@
             android:label="@string/title_activity_second"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".test.event.TestEventActivity"/>
+        <activity android:name=".test.drawable.TestDrawableActivity"/>
     </application>
 
 </manifest>

@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 
 import com.adamzfc.androidbase.main.MainActivity;
+import com.adamzfc.androidbase.test.drawable.TestDrawableActivity;
 import com.adamzfc.androidbase.test.event.TestEventActivity;
 import com.adamzfc.base.BaseRecyclerAdapter;
 import com.adamzfc.base.BaseRecyclerHolder;
@@ -33,6 +34,7 @@ public class IndexActivity extends CommonAcitivity {
         List<IndexItem> datas = new ArrayList<>();
         datas.add(new IndexItem("Retrofit测试", MainActivity.class));
         datas.add(new IndexItem("Activity事件派发测试", TestEventActivity.class));
+        datas.add(new IndexItem("Drawable", TestDrawableActivity.class));
         BaseRecyclerAdapter<IndexItem> adapter = new BaseRecyclerAdapter<IndexItem>(this, datas) {
             @Override
             protected void bindData(BaseRecyclerHolder holder, int position, IndexItem indexItem) {

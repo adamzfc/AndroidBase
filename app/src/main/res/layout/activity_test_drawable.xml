@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.adamzfc.androidbase.test.drawable.CustomView
+        android:id="@+id/custom_view"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+    <ImageView
+        android:id="@+id/imageview1"
+        android:layout_toRightOf="@id/custom_view"
+        android:layout_toEndOf="@id/custom_view"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+    <ImageView
+        android:id="@+id/imageview2"
+        android:layout_toRightOf="@id/imageview1"
+        android:layout_toEndOf="@id/imageview1"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+    
+    <ImageView
+        android:id="@+id/imageview3"
+        android:layout_below="@id/imageview1"
+        android:layout_marginTop="10dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+    <ImageView
+        android:id="@+id/imageview4"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/imageview1"
+        android:layout_toRightOf="@id/imageview3"
+        android:layout_toEndOf="@id/imageview3"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+    <ImageView
+        android:id="@+id/imageview5"
+        android:src="@drawable/ic_test1"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/imageview3"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+    <ImageView
+        android:id="@+id/imageview6"
+        android:src="@drawable/ic_test1"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/imageview3"
+        android:layout_toRightOf="@id/imageview5"
+        android:layout_toEndOf="@id/imageview5"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+    <com.adamzfc.androidbase.test.drawable.IconView
+        android:id="@+id/imageview7"
+        android:layout_below="@id/imageview5"
+        android:layout_marginTop="10dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp" />
+    <com.adamzfc.androidbase.test.drawable.IconView
+        android:id="@+id/imageview8"
+        android:layout_below="@id/imageview5"
+        android:layout_toRightOf="@id/imageview7"
+        android:layout_toEndOf="@id/imageview7"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp" />
+    <com.adamzfc.androidbase.test.drawable.IconView
+        android:id="@+id/imageview9"
+        android:layout_below="@id/imageview5"
+        android:layout_toRightOf="@id/imageview8"
+        android:layout_toEndOf="@id/imageview8"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp" />
+    <com.adamzfc.androidbase.test.drawable.IconView
+        android:id="@+id/imageview10"
+        android:layout_below="@id/imageview5"
+        android:layout_toRightOf="@id/imageview9"
+        android:layout_toEndOf="@id/imageview9"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp" />
+
+</RelativeLayout>
