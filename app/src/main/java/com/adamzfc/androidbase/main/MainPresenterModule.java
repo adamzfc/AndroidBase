@@ -15,6 +15,10 @@ public class MainPresenterModule {
         mView = view;
     }
 
+    /**
+     * provide
+     * @return MainContract.View
+     */
     @Provides
     MainContract.View provideMainContractView() {
         return mView;

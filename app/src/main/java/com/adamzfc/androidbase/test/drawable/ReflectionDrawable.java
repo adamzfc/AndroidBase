@@ -36,6 +36,11 @@ public class ReflectionDrawable extends Drawable {
                 matrix, true);
     }
 
+    /**
+     * set reflection height
+     * @param height reflection height
+     * @return ReflectionDrawable
+     */
     public ReflectionDrawable setReflectionHeight(@IntRange(from = 0) int height) {
         mReflectionHeight = height;
         invalidateSelf();

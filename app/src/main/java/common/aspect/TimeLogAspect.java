@@ -13,19 +13,32 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by adamzfc on 3/6/17.
  */
-
+@SuppressWarnings("checkstyle:illegalthrows")
 @Aspect
 public class TimeLogAspect {
     private static final String TAG = "TimeLog";
 
+    /**
+     * point cut
+     */
     @Pointcut("execution(@common.annotation.TimeLog * *(..))")
     public void methodAnnotated() {
     }
 
+    /**
+     * point cut
+     */
     @Pointcut("execution(@common.annotation.TimeLog *.new(..))")
     public void constructorAnnotated() {
     }
 
+    /**
+     * around
+     *
+     * @param joinPoint join point
+     * @return result
+     * @throws Throwable throwable
+     */
     @Around("methodAnnotated() || constructorAnnotated()")
     public Object aroundJoinPoint(ProceedingJoinPoint joinPoint) throws Throwable {
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
@@ -35,13 +48,19 @@ public class TimeLogAspect {
         long startTime = System.nanoTime();
         Object result = joinPoint.proceed();
         StringBuilder keyBuilder = new StringBuilder();
-        keyBuilder.append(methodName + ":");
+        keyBuilder.append(methodName).append(':');
         for (Object obj : joinPoint.getArgs()) {
-            if (obj instanceof String) keyBuilder.append((String) obj);
-            else if (obj instanceof Class) keyBuilder.append(((Class) obj).getSimpleName());
+            if (obj instanceof String) {
+                keyBuilder.append((String) obj);
+            } else if (obj instanceof Class) {
+                keyBuilder.append(((Class) obj).getSimpleName());
+            }
         }
         String key = keyBuilder.toString();
-        LogUtil.showLog(TAG, (className + "." + key + joinPoint.getArgs().toString() + " --->:" + "[" + (TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startTime)) + "ms]"));// 打印时间差
+        // 打印时间差
+        LogUtil.showLog(TAG, (className + "." + key + " --->:"
+                + "[" + (TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startTime))
+                + "ms]"));
         return result;
     }
 }

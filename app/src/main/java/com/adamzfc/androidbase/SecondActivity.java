@@ -9,16 +9,22 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.adamzfc.router.ActivityRouter;
-import com.adamzfc.router.annotation.Extra;
 import com.adamzfc.router.annotation.Router;
 import com.adamzfc.router.annotation.SceneTransition;
 
 import common.constants.IntentC;
 
+/**
+ * second activity
+ */
 @Router(IntentC.SECOND)
 public class SecondActivity extends AppCompatActivity {
+    /**
+     * transition imageview
+     */
+    @SuppressWarnings("visibilitymodifier")
     @SceneTransition("test")
-    public ImageView imageView;
+    public ImageView mImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +32,7 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        imageView = (ImageView) findViewById(R.id.imageView);
+        mImageView = (ImageView) findViewById(R.id.imageView);
         ActivityRouter.bind(this);
 
 

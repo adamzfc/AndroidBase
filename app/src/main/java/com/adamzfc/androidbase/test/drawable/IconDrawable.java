@@ -43,6 +43,11 @@ public class IconDrawable extends Drawable {
         mMatrix = new Matrix();
     }
 
+    /**
+     * set text label
+     * @param string string label
+     * @return IconDrawable
+     */
     public IconDrawable setTextLabel(String string) {
         mContentText = string;
         mContentBitmap = null;
@@ -50,6 +55,11 @@ public class IconDrawable extends Drawable {
         return this;
     }
 
+    /**
+     * set icon label
+     * @param bitmap bitmap label
+     * @return IconDrawable
+     */
     public IconDrawable setIconLabel(Bitmap bitmap) {
         mContentBitmap = bitmap;
         mContentText = null;
@@ -57,18 +67,33 @@ public class IconDrawable extends Drawable {
         return this;
     }
 
+    /**
+     * set text font size
+     * @param size font size
+     * @return IconDrawable
+     */
     public IconDrawable setTextFontSize(int size) {
         mFontSize = size;
         invalidateSelf();
         return this;
     }
 
+    /**
+     * set text color
+     * @param color text color
+     * @return IconDrawable
+     */
     public IconDrawable setTextColor(int color) {
         mTextColor = color;
         invalidateSelf();
         return this;
     }
 
+    /**
+     * set background color
+     * @param color background color
+     * @return IconDrawable
+     */
     public IconDrawable setBackgroundColor(int color) {
         mBgColor = color;
         invalidateSelf();
@@ -82,8 +107,8 @@ public class IconDrawable extends Drawable {
         int count = canvas.saveLayer(new RectF(rect), null, Canvas.ALL_SAVE_FLAG);
         canvas.translate(rect.left, rect.top);
         mClipPath.reset();
-        mClipPath.addCircle(rect.width()/2, rect.height()/2,
-                Math.min(rect.width(), rect.height())/2, Path.Direction.CCW);
+        mClipPath.addCircle(rect.width() / 2, rect.height() / 2,
+                Math.min(rect.width(), rect.height()) / 2, Path.Direction.CCW);
         canvas.clipPath(mClipPath);
 
         if (mContentBitmap == null && !TextUtils.isEmpty(mContentText)) {

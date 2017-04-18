@@ -15,6 +15,9 @@
         <property name="file" value="${checkstyleSuppressionsPath}"/>
     </module>
 
+    <!-- http://stackoverflow.com/questions/27688426/ignoring-of-checkstyle-warnings-with-annotation-suppresswarnings -->
+    <module name="SuppressWarningsFilter" />
+
     <module name="TreeWalker">
 
         <!-- See http://checkstyle.sf.net/config_sizes.html !-->
@@ -250,6 +253,10 @@
             <property name="applyToPrivate" value="true"/>
         </module>
 
+        <!-- http://checkstyle.sourceforge.net/config_filters.html#SuppressWarningsFilter -->
+        <module name="SuppressWarningsHolder" />
+
+
     </module>
     <module name="TreeWalker">
 
@@ -298,7 +305,8 @@
             <property name="allowMissingPropertyJavadoc" value="true"/>
             <property name="logLoadErrors" value="true"/>
             <property name="suppressLoadErrors" value="false"/>
-            <property name="tokens" value="METHOD_DEF, CTOR_DEF"/>
+            <!-- http://stackoverflow.com/questions/32318587/how-to-disable-checkstyle-javadoc-validation-for-constructors -->
+            <property name="tokens" value="METHOD_DEF"/>
         </module>
 
         <!-- Checks that variables have Javadoc comments. !-->
@@ -434,6 +442,5 @@
         <module name="UnusedImports"/>
 
     </module>
-
 
 </module>

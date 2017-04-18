@@ -28,26 +28,52 @@ public class LauncherIconDrawable extends Drawable {
         mDrawable = drawable;
     }
 
+    /**
+     * set default color
+     * @param defaultColor default color
+     * @return LauncherIconDrawable
+     */
     public LauncherIconDrawable setDefaultColor(@ColorInt int defaultColor) {
         return setDefaultColor(defaultColor, PorterDuff.Mode.MULTIPLY);
     }
 
+    /**
+     * set default color
+     * @param defaultColor defautl color
+     * @param mode mode
+     * @return LauncherIconDrawable
+     */
     public LauncherIconDrawable setDefaultColor(@ColorInt int defaultColor, PorterDuff.Mode mode) {
         mDefaultColorFilter = new PorterDuffColorFilter(defaultColor, mode);
         invalidateSelf();
         return this;
     }
 
+    /**
+     * set percent color
+     * @param percentColor percent color
+     * @return LauncherIconDrawable
+     */
     public LauncherIconDrawable setPercentColor(@ColorInt int percentColor) {
         return setPercentColor(percentColor, PorterDuff.Mode.MULTIPLY);
     }
 
+    /**
+     * set percent color
+     * @param percentColor percent color
+     * @param mode mode
+     * @return LauncherIconDrawable
+     */
     public LauncherIconDrawable setPercentColor(@ColorInt int percentColor, PorterDuff.Mode mode) {
         mPercentColorFilter = new PorterDuffColorFilter(percentColor, mode);
         invalidateSelf();
         return this;
     }
 
+    /**
+     * set current percent
+     * @param curPercent current percent
+     */
     public void setCurPercent(@FloatRange(from = 0f, to = 1f) float curPercent) {
         mPercent = curPercent;
         invalidateSelf();
@@ -55,7 +81,9 @@ public class LauncherIconDrawable extends Drawable {
 
     @Override
     public void draw(@NonNull Canvas canvas) {
-        if (mDrawable == null) return;
+        if (mDrawable == null) {
+            return;
+        }
 
         Rect rect = getBounds();
         int curOffset = (int) (mPercent * rect.height());

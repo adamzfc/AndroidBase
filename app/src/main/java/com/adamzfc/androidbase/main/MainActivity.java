@@ -15,17 +15,26 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+
+/**
+ * main activity
+ */
 @Router(IntentC.MAIN)
 public class MainActivity extends CommonAcitivity {
 
-    @Inject MainPresenter mPresenter;
+    /**
+     * mainpresenter inject
+     */
+    @SuppressWarnings("visibilitymodifier")
+    @Inject
+    MainPresenter mPresenter;
 
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_main);
 //        ActivityRouter.bind(this);
-//        findViewById(R.id.imageView).setOnClickListener(new View.OnClickListener() {
+//        findViewById(R.id.mImageView).setOnClickListener(new View.OnClickListener() {
 //            @SingleClick
 //            @Override
 //            public void onClick(View v) {
@@ -67,7 +76,6 @@ public class MainActivity extends CommonAcitivity {
 
                     @Override
                     public void onNext(String value) {
-                        System.out.print(value);
                         Log.d("test", value);
                     }
 

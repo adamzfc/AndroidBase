@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 /**
  * Created by adamzfc on 3/17/17.
  */
-
+@SuppressWarnings({"checkstyle:javadocmethod", "javadoctype", "javadocvariable"})
 public interface ArticleModel {
     String TABLE_NAME = "Articles";
     String CREATE_TABLE = ""

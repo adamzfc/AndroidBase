@@ -7,6 +7,7 @@ import dagger.Component;
 /**
  * Created by adamzfc on 3/9/17.
  */
+@SuppressWarnings({"checkstyle:javadocmethod"})
 @FragmentScope
 @Component(modules = MainPresenterModule.class)
 public interface MainComponet {

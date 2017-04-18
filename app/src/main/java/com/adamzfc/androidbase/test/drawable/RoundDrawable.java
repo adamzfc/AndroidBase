@@ -35,6 +35,11 @@ public class RoundDrawable extends Drawable {
         mMatrix = new Matrix();
     }
 
+    /**
+     * set corner radius
+     * @param radius corner radius
+     * @return RoundDrawable
+     */
     public RoundDrawable setCornerRadius(@FloatRange(from = 0f) float radius) {
         mCornerRadius = radius;
         invalidateSelf();

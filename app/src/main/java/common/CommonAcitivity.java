@@ -19,7 +19,15 @@ public abstract class CommonAcitivity extends AppCompatActivity {
         ActivityRouter.bind(this);
     }
 
+    /**
+     * init view
+     */
     protected abstract void initView();
 
-    protected abstract @LayoutRes int setLayout();
+    /**
+     * set activity root layout
+     * @return layout id
+     */
+    @LayoutRes
+    protected abstract int setLayout();
 }

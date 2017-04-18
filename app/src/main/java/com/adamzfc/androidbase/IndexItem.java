@@ -3,10 +3,10 @@ package com.adamzfc.androidbase;
 /**
  * Created by adamzfc on 4/14/17.
  */
-
+@SuppressWarnings("checkstyle:membername")
 public class IndexItem {
-    String name;
-    Class clz;
+    private String name;
+    private Class clz;
 
     public IndexItem(String name, Class clz) {
         this.name = name;

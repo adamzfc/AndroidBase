@@ -8,6 +8,7 @@ import com.google.auto.value.AutoValue;
 /**
  * Created by adamzfc on 3/17/17.
  */
+@SuppressWarnings({"checkstyle:javadocmethod", "javadoctype"})
 @AutoValue
 public abstract class Article implements ArticleModel {
 

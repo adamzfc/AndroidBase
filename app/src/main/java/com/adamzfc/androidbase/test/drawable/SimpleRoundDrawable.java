@@ -26,7 +26,7 @@ public class SimpleRoundDrawable extends Drawable {
         Rect rect = getBounds();
         int width = rect.right - rect.left;
         int height = rect.bottom - rect.top;
-        canvas.drawCircle(width/2, height/2, Math.min(width/2, height/2), mPaint);
+        canvas.drawCircle(width / 2, height / 2, Math.min(width / 2, height / 2), mPaint);
     }
 
     @Override

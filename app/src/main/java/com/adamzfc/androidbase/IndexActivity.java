@@ -27,7 +27,8 @@ import common.constants.IntentC;
  */
 @Router(IntentC.INDEX)
 public class IndexActivity extends CommonAcitivity {
-    Logger logger = LoggerFactory.getLogger(IndexActivity.class);
+    @SuppressWarnings("constantname")
+    private static final Logger logger = LoggerFactory.getLogger(IndexActivity.class);
     @Override
     protected void initView() {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);

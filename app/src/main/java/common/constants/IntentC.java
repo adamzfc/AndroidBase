@@ -1,15 +1,14 @@
 package common.constants;
 
-import com.adamzfc.androidbase.main.MainActivity;
-
 /**
  * Created by adamzfc on 3/7/17.
  * intent contants
  */
 
-public class IntentC {
+public final class IntentC {
+
     /**
-     * @see MainActivity
+     * @see com.adamzfc.androidbase.main.MainActivity
      */
     public static final String MAIN = "main";
 
@@ -24,4 +23,6 @@ public class IntentC {
      */
     public static final String INDEX = "index";
 
+    private IntentC() {
+    }
 }
