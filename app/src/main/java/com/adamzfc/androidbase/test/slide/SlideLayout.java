@@ -13,11 +13,21 @@ import com.adamzfc.androidbase.R;
 
 /**
  * Created by adamzfc on 4/18/17.
+ *
  * @see android.support.v4.widget.SlidingPaneLayout
  */
 public class SlideLayout extends ViewGroup {
+    /**
+     * state close
+     */
     public static final int STATE_CLOSE = 0;
+    /**
+     * state sliding
+     */
     public static final int STATE_SLIDING = 1;
+    /**
+     * state open
+     */
     public static final int STATE_OPEN = 2;
 
     private static final int SLIDE_RIGHT = 0;
@@ -59,22 +69,33 @@ public class SlideLayout extends ViewGroup {
         mScroller = new Scroller(context);
     }
 
+    /**
+     * get slide state
+     *
+     * @return slide state
+     */
     public int getSlideState() {
         int retValue = STATE_CLOSE;
         if (mIsScrolling) {
             retValue = STATE_SLIDING;
         } else {
-            int scrollOffset = (mSlideDirection == SLIDE_LEFT || mSlideDirection == SLIDE_RIGHT) ?
-                    getScrollX() : getScrollY();
+            int scrollOffset = (mSlideDirection == SLIDE_LEFT || mSlideDirection == SLIDE_RIGHT)
+                    ? getScrollX() : getScrollY();
             retValue = (scrollOffset == 0) ? STATE_CLOSE : STATE_OPEN;
         }
         return retValue;
     }
 
+    /**
+     * colse slide
+     */
     public void smoothCloseSlide() {
         smoothScrollTo(0, 0);
     }
 
+    /**
+     * open slide
+     */
     public void smoothOpenSlide() {
         switch (mSlideDirection) {
             case SLIDE_RIGHT:
@@ -88,6 +109,8 @@ public class SlideLayout extends ViewGroup {
                 break;
             case SLIDE_BOTTOM:
                 smoothScrollTo(0, mSlideView.getMeasuredHeight());
+                break;
+            default:
                 break;
         }
     }
@@ -127,6 +150,8 @@ public class SlideLayout extends ViewGroup {
                 mSlideView.layout(0, getMeasuredHeight(),
                         getMeasuredWidth(), mSlideView.getMeasuredHeight() + getMeasuredHeight());
                 break;
+            default:
+                break;
         }
     }
 
@@ -135,6 +160,7 @@ public class SlideLayout extends ViewGroup {
         return mIsScrolling || super.onInterceptTouchEvent(event);
     }
 
+    @SuppressWarnings("methodlength")
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
         int eventX = (int) event.getX();
@@ -198,6 +224,8 @@ public class SlideLayout extends ViewGroup {
                             newScrollY = mSlideView.getMeasuredHeight();
                         }
                         break;
+                    default:
+                        break;
                 }
                 scrollTo(newScrollX, newScrollY);
                 break;
@@ -228,11 +256,14 @@ public class SlideLayout extends ViewGroup {
                             finalScrollY = mSlideView.getMeasuredHeight();
                         }
                         break;
+                    default:
+                        break;
                 }
                 smoothScrollTo(finalScrollX, finalScrollY);
                 break;
+            default:
+                break;
         }
-
         mLastX = eventX;
         mLastY = eventY;
         return super.dispatchTouchEvent(event);
@@ -258,7 +289,7 @@ public class SlideLayout extends ViewGroup {
         int scrollY = getScrollY();
         int deltaY = destY - scrollY;
         mScroller.startScroll(scrollX, scrollY, deltaX, deltaY,
-                (int) (Math.abs(Math.sqrt(deltaX*deltaX + deltaY*deltaY)) * 3));
+                (int) (Math.abs(Math.sqrt(deltaX * deltaX + deltaY * deltaY)) * 3));
         postInvalidate();
     }
 

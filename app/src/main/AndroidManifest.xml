@@ -28,6 +28,7 @@
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".test.event.TestEventActivity"/>
         <activity android:name=".test.drawable.TestDrawableActivity"/>
+        <activity android:name=".test.slide.TestSlideActivity"/>
     </application>
 
 </manifest>

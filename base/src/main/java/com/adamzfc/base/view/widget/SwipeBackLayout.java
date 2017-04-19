@@ -42,26 +42,40 @@ import android.widget.ScrollView;
  * <p>
  * Created by Eric on 15/1/8.
  */
-public class SwipeBackLayout extends ViewGroup {
 
+public class SwipeBackLayout extends ViewGroup {
     private static final String TAG = "SwipeBackLayout";
 
+    /**
+     * drag edge
+     */
     public enum DragEdge {
+        /**
+         * left
+         */
         LEFT,
-
+        /**
+         * top
+         */
         TOP,
-
+        /**
+         * right
+         */
         RIGHT,
-
+        /**
+         * bottom
+         */
         BOTTOM
     }
-
     private DragEdge dragEdge = DragEdge.TOP;
 
+    /**
+     * set drag edge
+     * @param dragEdge drag edge
+     */
     public void setDragEdge(DragEdge dragEdge) {
         this.dragEdge = dragEdge;
     }
-
 
     private static final double AUTO_FINISHED_SPEED_LIMIT = 2000.0;
 
@@ -94,7 +108,7 @@ public class SwipeBackLayout extends ViewGroup {
     /**
      * Set the anchor of calling finish.
      *
-     * @param offset
+     * @param offset offset
      */
     public void setFinishAnchor(float offset) {
         finishAnchor = offset;
@@ -105,7 +119,7 @@ public class SwipeBackLayout extends ViewGroup {
     /**
      * Whether allow to finish activity by fling the layout.
      *
-     * @param b
+     * @param b boolean
      */
     public void setEnableFlingBack(boolean b) {
         enableFlingBack = b;
@@ -113,11 +127,19 @@ public class SwipeBackLayout extends ViewGroup {
 
     private SwipeBackListener swipeBackListener;
 
+    /**
+     * deprecated
+     * @param listener listener
+     */
     @Deprecated
     public void setOnPullToBackListener(SwipeBackListener listener) {
         swipeBackListener = listener;
     }
 
+    /**
+     * set swipeback listener
+     * @param listener listener
+     */
     public void setOnSwipeBackListener(SwipeBackListener listener) {
         swipeBackListener = listener;
     }
@@ -132,10 +154,18 @@ public class SwipeBackLayout extends ViewGroup {
         viewDragHelper = ViewDragHelper.create(this, 1.0f, new ViewDragHelperCallBack());
     }
 
+    /**
+     * set scroll child
+     * @param view scroll child view
+     */
     public void setScrollChild(View view) {
         scrollChild = view;
     }
 
+    /**
+     * Whether allow to finish activity by pull to back.
+     * @param b boolean
+     */
     public void setEnablePullToBack(boolean b) {
         enablePullToBack = b;
     }
@@ -153,7 +183,6 @@ public class SwipeBackLayout extends ViewGroup {
                 } else {
                     scrollChild = target;
                 }
-
             }
         }
     }
@@ -161,7 +190,7 @@ public class SwipeBackLayout extends ViewGroup {
     /**
      * Find out the scrollable child view from a ViewGroup.
      *
-     * @param viewGroup
+     * @param viewGroup viewgroup
      */
     private void findScrollView(ViewGroup viewGroup) {
         scrollChild = viewGroup;
@@ -266,10 +295,18 @@ public class SwipeBackLayout extends ViewGroup {
         }
     }
 
+    /**
+     * get if can child scroll up
+     * @return boolean
+     */
     public boolean canChildScrollUp() {
         return ViewCompat.canScrollVertically(scrollChild, -1);
     }
 
+    /**
+     * get if can child scroll down
+     * @return boolean
+     */
     public boolean canChildScrollDown() {
         return ViewCompat.canScrollVertically(scrollChild, 1);
     }
@@ -463,7 +500,5 @@ public class SwipeBackLayout extends ViewGroup {
          * @param fractionScreen relative to the screen.
          */
         void onViewPositionChanged(float fractionAnchor, float fractionScreen);
-
     }
-
 }

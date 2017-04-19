@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.adamzfc.androidbase.test.slide.SlideLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="80dp">
+    <TextView
+        android:id="@+id/tv_content"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/tv_slide1"
+            android:background="@android:color/holo_blue_dark"
+            android:text="delete"
+            android:layout_width="40dp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/tv_slide2"
+            android:background="@android:color/holo_green_dark"
+            android:text="like"
+            android:layout_width="40dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+</com.adamzfc.androidbase.test.slide.SlideLayout>

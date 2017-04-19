@@ -152,4 +152,9 @@
     <issue id="WrongFolder" severity="ignore" />
     <issue id="WrongManifestParent" severity="ignore" />
     <issue id="WrongViewCast" severity="ignore" />
+    <!-- https://github.com/codepath/android_guides/wiki/Consuming-APIs-with-Retrofit -->
+    <issue id="InvalidPackage">
+        <ignore regexp=".*okio.*" />
+        <ignore regexp=".*retrofit.*" />
+    </issue>
 </lint>
