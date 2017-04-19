@@ -9,6 +9,7 @@ import com.adamzfc.androidbase.main.MainActivity;
 import com.adamzfc.androidbase.test.drawable.TestDrawableActivity;
 import com.adamzfc.androidbase.test.event.TestEventActivity;
 import com.adamzfc.androidbase.test.labelview.TestLabelViewActivity;
+import com.adamzfc.androidbase.test.magicfloat.TestMagicFloatViewActivity;
 import com.adamzfc.androidbase.test.slide.TestSlideActivity;
 import com.adamzfc.base.BaseRecyclerAdapter;
 import com.adamzfc.base.BaseRecyclerHolder;
@@ -40,6 +41,7 @@ public class IndexActivity extends CommonAcitivity {
         datas.add(new IndexItem("Drawable", TestDrawableActivity.class));
         datas.add(new IndexItem("SlideLayout", TestSlideActivity.class));
         datas.add(new IndexItem("LabelView", TestLabelViewActivity.class));
+        datas.add(new IndexItem("MagicFloatView", TestMagicFloatViewActivity.class));
         BaseRecyclerAdapter<IndexItem> adapter = new BaseRecyclerAdapter<IndexItem>(this, datas) {
             @Override
             protected void bindData(BaseRecyclerHolder holder, int position, IndexItem indexItem) {

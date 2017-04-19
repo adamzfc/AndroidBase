@@ -44,4 +44,12 @@
             <enum name="rightTop" value="45"/>
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="MagicFlyLinearLayout">
+        <attr name="flyAnimatorType">
+            <enum name="B2TScatter" value="0"/>
+            <enum name="T2BRainNormal" value="1"/>
+        </attr>
+        <attr name="flyDuration" format="integer"/>
+    </declare-styleable>
 </resources>

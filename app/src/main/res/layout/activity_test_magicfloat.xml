@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_magicfloat"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.adamzfc.androidbase.test.magicfloat.ParticleChainView
+        android:id="@+id/ParticleChainView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <com.adamzfc.androidbase.test.magicfloat.MagicFlyLinearLayout
+        android:id="@+id/rain_layout1"
+        app:flyAnimatorType="T2BRainNormal"
+        app:flyDuration="3000"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Space
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+        <Button
+            android:id="@+id/bt_rain1"
+            android:text="rain1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </com.adamzfc.androidbase.test.magicfloat.MagicFlyLinearLayout>
+    <com.adamzfc.androidbase.test.magicfloat.MagicFlyLinearLayout
+        android:id="@+id/rain_layout2"
+        app:flyAnimatorType="B2TScatter"
+        app:flyDuration="4000"
+        android:orientation="vertical"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="bottom|center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_width="200dp"
+        android:layout_height="800dp">
+        <Button
+            android:id="@+id/bt_rain2"
+            android:text="rain2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </com.adamzfc.androidbase.test.magicfloat.MagicFlyLinearLayout>
+
+</RelativeLayout>
