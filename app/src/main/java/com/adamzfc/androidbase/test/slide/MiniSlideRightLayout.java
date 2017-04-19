@@ -12,11 +12,17 @@ import android.widget.Scroller;
  */
 
 public class MiniSlideRightLayout extends LinearLayout {
-    // state close
+    /**
+     * state close
+     */
     public static final int STATE_CLOSE = 0;
-    // state sliding
+    /**
+     * state sliding
+     */
     public static final int STATE_SLIDING = 1;
-    // state open
+    /**
+     * state open
+     */
     public static final int STATE_OPEN = 2;
 
     private View mContentView;
@@ -62,6 +68,7 @@ public class MiniSlideRightLayout extends LinearLayout {
 
     /**
      * get slide state
+     *
      * @return slide state
      */
     public int getSlideState() {
@@ -149,7 +156,7 @@ public class MiniSlideRightLayout extends LinearLayout {
         int scrollY = getScrollY();
         int deltaY = destY - scrollY;
         mScroller.startScroll(scrollX, scrollY, deltaX, deltaY,
-                (int) (Math.abs(Math.sqrt(deltaX*deltaX + deltaY*deltaY)) * 3));
+                (int) (Math.abs(Math.sqrt(deltaX * deltaX + deltaY * deltaY)) * 3));
         postInvalidate();
     }
 

@@ -24,6 +24,7 @@ public class TestSlidePageAdapter extends PagerAdapter {
     public TestSlidePageAdapter(Context context) {
         mListData = new ArrayList<>();
         for (int index = 0; index < 3; index ++) {
+            @SuppressWarnings("InflateParams")
             View page = LayoutInflater.from(context).inflate(R.layout.item_test_slide_page, null);
             mListData.add(page);
         }

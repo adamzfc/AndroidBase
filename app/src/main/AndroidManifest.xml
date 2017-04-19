@@ -29,6 +29,7 @@
         <activity android:name=".test.event.TestEventActivity"/>
         <activity android:name=".test.drawable.TestDrawableActivity"/>
         <activity android:name=".test.slide.TestSlideActivity"/>
+        <activity android:name=".test.labelview.TestLabelViewActivity"/>
     </application>
 
 </manifest>
