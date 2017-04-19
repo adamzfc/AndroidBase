@@ -106,4 +106,94 @@
             android:layout_height="200dp"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.adamzfc.androidbase.test.slide.SlideLayout
+            app:slideCriticalValue="20dp"
+            app:slideDirection="fromLeft"
+            android:layout_width="170dp"
+            android:layout_height="200dp">
+            <ListView
+                android:background="@android:color/holo_blue_bright"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:entries="@array/slide_test_array">
+            </ListView>
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/holo_green_light"
+                android:gravity="center"
+                android:text="side area"/>
+        </com.adamzfc.androidbase.test.slide.SlideLayout>
+        <com.adamzfc.androidbase.test.slide.SlideLayout
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            app:slideCriticalValue="20dp"
+            app:slideDirection="fromRight"
+            android:layout_width="170dp"
+            android:layout_height="200dp">
+            <ScrollView
+                android:background="@android:color/holo_blue_bright"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="4096dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="ScrollView" />
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_test1"
+                        android:layout_marginTop="5dp"/>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_test2"
+                        android:layout_marginTop="5dp"/>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_test1"
+                        android:layout_marginTop="5dp"/>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_test2"
+                        android:layout_marginTop="5dp"/>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_test1"
+                        android:layout_marginTop="5dp"/>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_test2"
+                        android:layout_marginTop="5dp"/>
+                </LinearLayout>
+            </ScrollView>
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/holo_green_light"
+                android:gravity="center"
+                android:text="side area"/>
+        </com.adamzfc.androidbase.test.slide.SlideLayout>
+    </LinearLayout>
+
 </LinearLayout>

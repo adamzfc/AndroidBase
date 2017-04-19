@@ -3,4 +3,17 @@
     <string name="app_name">AndroidBase</string>
     <string name="title_activity_second">SecondActivity</string>
     <string name="action_settings">Settings</string>
+    <array name="slide_test_array">
+        <item>slide test 1</item>
+        <item>slide test 2</item>
+        <item>slide test 3</item>
+        <item>slide test 4</item>
+        <item>slide test 5</item>
+        <item>slide test 6</item>
+        <item>slide test 7</item>
+        <item>slide test 8</item>
+        <item>slide test 9</item>
+        <item>slide test 10</item>
+        <item>slide test 11</item>
+    </array>
 </resources>
