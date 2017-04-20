@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 
 import com.adamzfc.androidbase.main.MainActivity;
+import com.adamzfc.androidbase.test.camera.TestCameraActivity;
 import com.adamzfc.androidbase.test.drawable.TestDrawableActivity;
 import com.adamzfc.androidbase.test.event.TestEventActivity;
 import com.adamzfc.androidbase.test.labelview.TestLabelViewActivity;
@@ -42,6 +43,7 @@ public class IndexActivity extends CommonAcitivity {
         datas.add(new IndexItem("SlideLayout", TestSlideActivity.class));
         datas.add(new IndexItem("LabelView", TestLabelViewActivity.class));
         datas.add(new IndexItem("MagicFloatView", TestMagicFloatViewActivity.class));
+        datas.add(new IndexItem("TestCamera", TestCameraActivity.class));
         BaseRecyclerAdapter<IndexItem> adapter = new BaseRecyclerAdapter<IndexItem>(this, datas) {
             @Override
             protected void bindData(BaseRecyclerHolder holder, int position, IndexItem indexItem) {
