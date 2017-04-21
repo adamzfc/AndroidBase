@@ -33,6 +33,8 @@
         <activity android:name=".test.labelview.TestLabelViewActivity"/>
         <activity android:name=".test.magicfloat.TestMagicFloatViewActivity"/>
         <activity android:name=".test.camera.TestCameraActivity"/>
+        <activity android:name=".test.fragment.TestFragmentActivity"/>
+        <activity android:name=".test.fragment.TestFragmentActivity$DetailsActivity"/>
     </application>
 
 </manifest>

@@ -9,6 +9,7 @@ import com.adamzfc.androidbase.main.MainActivity;
 import com.adamzfc.androidbase.test.camera.TestCameraActivity;
 import com.adamzfc.androidbase.test.drawable.TestDrawableActivity;
 import com.adamzfc.androidbase.test.event.TestEventActivity;
+import com.adamzfc.androidbase.test.fragment.TestFragmentActivity;
 import com.adamzfc.androidbase.test.labelview.TestLabelViewActivity;
 import com.adamzfc.androidbase.test.magicfloat.TestMagicFloatViewActivity;
 import com.adamzfc.androidbase.test.slide.TestSlideActivity;
@@ -44,6 +45,7 @@ public class IndexActivity extends CommonAcitivity {
         datas.add(new IndexItem("LabelView", TestLabelViewActivity.class));
         datas.add(new IndexItem("MagicFloatView", TestMagicFloatViewActivity.class));
         datas.add(new IndexItem("TestCamera", TestCameraActivity.class));
+        datas.add(new IndexItem("TestFragment", TestFragmentActivity.class));
         BaseRecyclerAdapter<IndexItem> adapter = new BaseRecyclerAdapter<IndexItem>(this, datas) {
             @Override
             protected void bindData(BaseRecyclerHolder holder, int position, IndexItem indexItem) {

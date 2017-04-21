@@ -10,6 +10,8 @@ import java.util.Random;
  */
 
 public class T2BRainEvaluator extends B2TScatterEvaluator {
+
+    @SuppressWarnings({"membername", "multiplevariabledeclarations"})
     private PointF pointF1, pointF2;
 
     public T2BRainEvaluator(int width, int heigh, Bitmap bitmap) {

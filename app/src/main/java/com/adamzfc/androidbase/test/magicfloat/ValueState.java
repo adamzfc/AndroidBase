@@ -7,6 +7,7 @@ import android.graphics.PointF;
  * Created by adamzfc on 4/19/17.
  */
 
+@SuppressWarnings({"membername", "javadoctype", "javadocvariable", "visibilitymodifier"})
 public class ValueState {
     public Bitmap bitmap;
     public int alpha;
@@ -15,6 +16,6 @@ public class ValueState {
 
     @Override
     public String toString() {
-        return "{alpha="+alpha+", scale="+scale+", pointF="+pointF.toString()+"}";
+        return "{alpha=" + alpha + ", scale=" + scale + ", pointF=" + pointF.toString() + "}";
     }
 }

@@ -76,9 +76,10 @@ import java.util.concurrent.TimeUnit;
  * Created by adamzfc on 4/20/17.
  */
 
+@SuppressWarnings("filelength")
 public class Camera2BasicFragment extends Fragment
         implements View.OnClickListener, FragmentCompat.OnRequestPermissionsResultCallback {
-/**
+    /**
      * Conversion from screen rotation to JPEG orientation.
      */
     private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
@@ -300,12 +301,12 @@ public class Camera2BasicFragment extends Fragment
                     Integer afState = result.get(CaptureResult.CONTROL_AF_STATE);
                     if (afState == null) {
                         captureStillPicture();
-                    } else if (CaptureResult.CONTROL_AF_STATE_FOCUSED_LOCKED == afState ||
-                            CaptureResult.CONTROL_AF_STATE_NOT_FOCUSED_LOCKED == afState) {
+                    } else if (CaptureResult.CONTROL_AF_STATE_FOCUSED_LOCKED == afState
+                            || CaptureResult.CONTROL_AF_STATE_NOT_FOCUSED_LOCKED == afState) {
                         // CONTROL_AE_STATE can be null on some devices
                         Integer aeState = result.get(CaptureResult.CONTROL_AE_STATE);
-                        if (aeState == null ||
-                                aeState == CaptureResult.CONTROL_AE_STATE_CONVERGED) {
+                        if (aeState == null
+                                || aeState == CaptureResult.CONTROL_AE_STATE_CONVERGED) {
                             mState = STATE_PICTURE_TAKEN;
                             captureStillPicture();
                         } else {
@@ -317,9 +318,9 @@ public class Camera2BasicFragment extends Fragment
                 case STATE_WAITING_PRECAPTURE: {
                     // CONTROL_AE_STATE can be null on some devices
                     Integer aeState = result.get(CaptureResult.CONTROL_AE_STATE);
-                    if (aeState == null ||
-                            aeState == CaptureResult.CONTROL_AE_STATE_PRECAPTURE ||
-                            aeState == CaptureRequest.CONTROL_AE_STATE_FLASH_REQUIRED) {
+                    if (aeState == null
+                            || aeState == CaptureResult.CONTROL_AE_STATE_PRECAPTURE
+                            || aeState == CaptureRequest.CONTROL_AE_STATE_FLASH_REQUIRED) {
                         mState = STATE_WAITING_NON_PRECAPTURE;
                     }
                     break;
@@ -333,6 +334,8 @@ public class Camera2BasicFragment extends Fragment
                     }
                     break;
                 }
+                default:
+                    break;
             }
         }
 
@@ -386,7 +389,7 @@ public class Camera2BasicFragment extends Fragment
      * @return The optimal {@code Size}, or an arbitrary one if none were big enough
      */
     private static Size chooseOptimalSize(Size[] choices, int textureViewWidth,
-            int textureViewHeight, int maxWidth, int maxHeight, Size aspectRatio) {
+                                          int textureViewHeight, int maxWidth, int maxHeight, Size aspectRatio) {
 
         // Collect the supported resolutions that are at least as big as the preview Surface
         List<Size> bigEnough = new ArrayList<>();
@@ -395,10 +398,10 @@ public class Camera2BasicFragment extends Fragment
         int w = aspectRatio.getWidth();
         int h = aspectRatio.getHeight();
         for (Size option : choices) {
-            if (option.getWidth() <= maxWidth && option.getHeight() <= maxHeight &&
-                    option.getHeight() == option.getWidth() * h / w) {
-                if (option.getWidth() >= textureViewWidth &&
-                    option.getHeight() >= textureViewHeight) {
+            if (option.getWidth() <= maxWidth && option.getHeight() <= maxHeight
+                    && option.getHeight() == option.getWidth() * h / w) {
+                if (option.getWidth() >= textureViewWidth
+                        && option.getHeight() >= textureViewHeight) {
                     bigEnough.add(option);
                 } else {
                     notBigEnough.add(option);
@@ -418,6 +421,7 @@ public class Camera2BasicFragment extends Fragment
         }
     }
 
+    @SuppressWarnings("javadocmethod")
     public static Camera2BasicFragment newInstance() {
         return new Camera2BasicFragment();
     }
@@ -492,6 +496,7 @@ public class Camera2BasicFragment extends Fragment
      * @param width  The width of available size for camera preview
      * @param height The height of available size for camera preview
      */
+    @SuppressWarnings("methodlength")
     private void setUpCameraOutputs(int width, int height) {
         Activity activity = getActivity();
         CameraManager manager = (CameraManager) activity.getSystemService(Context.CAMERA_SERVICE);
@@ -819,8 +824,8 @@ public class Camera2BasicFragment extends Fragment
                 return;
             }
             // This is the CaptureRequest.Builder that we use to take a picture.
-            final CaptureRequest.Builder captureBuilder =
-                    mCameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_STILL_CAPTURE);
+            final CaptureRequest.Builder captureBuilder
+                    = mCameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_STILL_CAPTURE);
             captureBuilder.addTarget(mImageReader.getSurface());
 
             // Use the same AE and AF modes as the preview.

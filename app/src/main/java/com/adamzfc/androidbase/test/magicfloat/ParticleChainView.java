@@ -2,7 +2,6 @@ package com.adamzfc.androidbase.test.magicfloat;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -46,7 +45,7 @@ public class ParticleChainView extends SurfaceView implements SurfaceHolder.Call
 
     public ParticleChainView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context ,attrs);
+        init(context, attrs);
     }
 
     private void init(Context context, AttributeSet attrs) {
@@ -90,20 +89,21 @@ public class ParticleChainView extends SurfaceView implements SurfaceHolder.Call
         Rect dst = new Rect(0, 0, getMeasuredWidth(), getMeasuredHeight());
         canvas.drawBitmap(mBgBitmap, null, dst, null);
         List<RandomParticle> lines = new ArrayList<>();
-        for (int index=0; mRandomParticles != null && index<mRandomParticles.size(); index++) {
+        for (int index = 0; mRandomParticles != null && index < mRandomParticles.size(); index++) {
             RandomParticle particle = mRandomParticles.get(index);
             if (isInnerLineArea(particle)) {
                 lines.add(particle);
             }
         }
 
-        for (int index=0; index<lines.size(); index++) {
-            for (int jdex=0; jdex<lines.size(); jdex++) {
+        for (int index = 0; index < lines.size(); index++) {
+            for (int jdex = 0; jdex < lines.size(); jdex++) {
                 RandomParticle particle1 = lines.get(index);
                 RandomParticle particle2 = lines.get(jdex);
                 if (doubleParticleDistance(particle1, particle2) < 150
                         && doubleParticleDistance(particle1, particle2) > 0) {
-                    int lineColor = Color.argb(120, new Random().nextInt(255), new Random().nextInt(255), new Random().nextInt(255));
+                    int lineColor = Color.argb(120, new Random().nextInt(255),
+                            new Random().nextInt(255), new Random().nextInt(255));
                     mParticlePaint.setStrokeWidth(8);
                     mParticlePaint.setColor(lineColor);
                     canvas.drawLine(particle1.positionX, particle1.positionY,
@@ -112,7 +112,7 @@ public class ParticleChainView extends SurfaceView implements SurfaceHolder.Call
             }
         }
 
-        for (int index=0; mRandomParticles != null && index<mRandomParticles.size(); index++) {
+        for (int index = 0; mRandomParticles != null && index < mRandomParticles.size(); index++) {
             RandomParticle particle = mRandomParticles.get(index);
             mParticlePaint.setColor(particle.color);
             particle.move();
@@ -150,7 +150,7 @@ public class ParticleChainView extends SurfaceView implements SurfaceHolder.Call
         mTouchPoint.x = getMeasuredWidth() / 2;
         mTouchPoint.y = getMeasuredHeight() / 2;
         mRandomParticles = new ArrayList<>();
-        for (int index=0 ;index<250; index++) {
+        for (int index = 0; index < 250; index++) {
             RandomParticle particle = new RandomParticle(getMeasuredWidth(), getMeasuredHeight());
             mRandomParticles.add(particle);
         }
@@ -158,10 +158,15 @@ public class ParticleChainView extends SurfaceView implements SurfaceHolder.Call
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        mTouchPoint.set((int)event.getX(), (int)event.getY());
+        mTouchPoint.set((int) event.getX(), (int) event.getY());
         return true;
     }
 
+    /**
+     * is inner line area
+     * @param particle particle
+     * @return true or false
+     */
     public boolean isInnerLineArea(RandomParticle particle) {
         int disX = Math.abs(mTouchPoint.x - particle.positionX);
         int disY = Math.abs(mTouchPoint.y - particle.positionY);
@@ -171,12 +176,22 @@ public class ParticleChainView extends SurfaceView implements SurfaceHolder.Call
         return false;
     }
 
+    /**
+     * double particle distance
+     * @param particle1 1
+     * @param particle2 2
+     * @return double particle distance
+     */
     public int doubleParticleDistance(RandomParticle particle1, RandomParticle particle2) {
         int disx = Math.abs(particle1.positionX - particle2.positionX);
         int disy = Math.abs(particle1.positionY - particle2.positionY);
         return (int) Math.sqrt(disx * disx + disy * disy);
     }
 
+    /**
+     * random particle
+     */
+    @SuppressWarnings({"membername", "javadocmethod", "javadocvariable", "visibilitymodifier"})
     public static class RandomParticle {
         public int radius;
         public int color;
@@ -192,7 +207,8 @@ public class ParticleChainView extends SurfaceView implements SurfaceHolder.Call
         public RandomParticle(int width, int heigh) {
             this.mMeasurePoint = new Point(width, heigh);
             this.radius = randomRange(10, 15);
-            this.color = Color.argb(randomRange(156, 255), randomRange(0, 255), randomRange(0, 255), randomRange(0, 255));
+            this.color = Color.argb(randomRange(156, 255), randomRange(0, 255),
+                    randomRange(0, 255), randomRange(0, 255));
             this.positionX = randomRange(this.radius, this.mMeasurePoint.x - this.radius);
             this.positionY = randomRange(this.radius, this.mMeasurePoint.y - this.radius);
             this.speedDirectionX = randomRange(0, 5) * (new Random().nextBoolean() ? 1 : -1);
