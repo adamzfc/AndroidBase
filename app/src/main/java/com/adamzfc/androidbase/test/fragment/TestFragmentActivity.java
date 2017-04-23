@@ -21,17 +21,21 @@ import com.adamzfc.androidbase.R;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import ch.qos.logback.classic.LoggerContext;
+
 /**
  * Created by adamzfc on 4/21/17.
  */
 
 public class TestFragmentActivity extends FragmentActivity {
-    @SuppressWarnings("constantname")
-    private static final Logger logger = LoggerFactory.getLogger(TestFragmentActivity.class);
+    @SuppressWarnings("membername")
+//    private final static Logger logger = LoggerFactory.getLogger(TestFragmentActivity.class);
+    private Logger logger;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_fragment);
+        logger = LoggerFactory.getLogger(TestFragmentActivity.class);
         logger.info("recreate");
         DetailsFragment details = (DetailsFragment) getSupportFragmentManager().findFragmentByTag("details");
         if (details != null) {
@@ -41,6 +45,13 @@ public class TestFragmentActivity extends FragmentActivity {
 //                    .remove(details)
 //                    .commit();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+//        LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
+//        loggerContext.stop();
     }
 
     public static class DetailsActivity extends FragmentActivity {

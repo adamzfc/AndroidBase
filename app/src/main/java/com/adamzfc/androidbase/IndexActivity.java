@@ -1,6 +1,9 @@
 package com.adamzfc.androidbase;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.support.v4.content.PermissionChecker;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
@@ -22,6 +25,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.jar.Manifest;
 
 import common.CommonAcitivity;
 import common.constants.IntentC;
@@ -32,10 +36,19 @@ import common.constants.IntentC;
  */
 @Router(IntentC.INDEX)
 public class IndexActivity extends CommonAcitivity {
+    private static final int PERMISSION_CODE_SD = 0x0010;
     @SuppressWarnings("constantname")
     private static final Logger logger = LoggerFactory.getLogger(IndexActivity.class);
     @Override
     protected void initView() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (PackageManager.PERMISSION_GRANTED
+                    != PermissionChecker.checkCallingOrSelfPermission(this,
+                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                requestPermissions(new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        PERMISSION_CODE_SD);
+            }
+        }
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         List<IndexItem> datas = new ArrayList<>();
         datas.add(new IndexItem("Retrofit测试", MainActivity.class));
@@ -52,7 +65,7 @@ public class IndexActivity extends CommonAcitivity {
                 Button button = holder.getButton(R.id.button);
                 button.setText(indexItem.getName());
                 button.setOnClickListener(v -> {
-                    logger.debug("startActivity {} {}", indexItem.getName(), indexItem.getClz());
+                    logger.info("startActivity {} {}", indexItem.getName(), indexItem.getClz());
                     startActivity(new Intent(IndexActivity.this, indexItem.getClz()));
                 });
             }
