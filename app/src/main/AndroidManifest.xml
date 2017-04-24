@@ -37,6 +37,10 @@
         <activity android:name=".test.camera.TestCameraActivity"/>
         <activity android:name=".test.fragment.TestFragmentActivity"/>
         <activity android:name=".test.fragment.TestFragmentActivity$DetailsActivity"/>
+        <service android:name=".test.socket.SocketService"
+            android:exported="false"
+            />
+        <activity android:name=".test.rxjava2.TestRxjava2Activity"/>
     </application>
 
 </manifest>

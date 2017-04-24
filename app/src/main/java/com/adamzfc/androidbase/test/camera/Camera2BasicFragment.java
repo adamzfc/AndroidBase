@@ -837,7 +837,7 @@ public class Camera2BasicFragment extends Fragment
             int rotation = activity.getWindowManager().getDefaultDisplay().getRotation();
             captureBuilder.set(CaptureRequest.JPEG_ORIENTATION, getOrientation(rotation));
 
-            CameraCaptureSession.CaptureCallback CaptureCallback
+            CameraCaptureSession.CaptureCallback captureCallback
                     = new CameraCaptureSession.CaptureCallback() {
 
                 @Override
@@ -851,7 +851,7 @@ public class Camera2BasicFragment extends Fragment
             };
 
             mCaptureSession.stopRepeating();
-            mCaptureSession.capture(captureBuilder.build(), CaptureCallback, null);
+            mCaptureSession.capture(captureBuilder.build(), captureCallback, null);
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }
@@ -909,6 +909,8 @@ public class Camera2BasicFragment extends Fragment
                 }
                 break;
             }
+            default:
+                break;
         }
     }
 
@@ -971,8 +973,8 @@ public class Camera2BasicFragment extends Fragment
         @Override
         public int compare(Size lhs, Size rhs) {
             // We cast here to ensure the multiplications won't overflow
-            return Long.signum((long) lhs.getWidth() * lhs.getHeight() -
-                    (long) rhs.getWidth() * rhs.getHeight());
+            return Long.signum((long) lhs.getWidth() * lhs.getHeight()
+                    - (long) rhs.getWidth() * rhs.getHeight());
         }
 
     }
@@ -984,6 +986,11 @@ public class Camera2BasicFragment extends Fragment
 
         private static final String ARG_MESSAGE = "message";
 
+        /**
+         * new instance
+         * @param message message
+         * @return new dialog
+         */
         public static ErrorDialog newInstance(String message) {
             ErrorDialog dialog = new ErrorDialog();
             Bundle args = new Bundle();
