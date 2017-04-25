@@ -28,7 +28,7 @@
         <remoteHost>192.168.5.111</remoteHost>
         <port>5000</port>
         <reconnectionDelay>10000</reconnectionDelay>
-        <includeCallerData>${includeCallerData}</includeCallerData>
+        <!--<includeCallerData>${includeCallerData}</includeCallerData>-->
     </appender>
 
     <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">

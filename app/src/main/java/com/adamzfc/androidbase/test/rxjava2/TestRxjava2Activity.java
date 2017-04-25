@@ -8,24 +8,28 @@ import android.widget.ListView;
 
 import com.adamzfc.androidbase.R;
 
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
-import io.reactivex.FlowableEmitter;
 import io.reactivex.FlowableOnSubscribe;
 import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by adamzfc on 4/24/17.
@@ -33,10 +37,12 @@ import io.reactivex.disposables.Disposable;
 
 public class TestRxjava2Activity extends Activity {
     List<String> mDatas;
+    private Logger logger;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        logger = LoggerFactory.getLogger(TestRxjava2Activity.class);
         setContentView(R.layout.activity_test_rxjava2);
         ListView listView = (ListView) findViewById(R.id.listview);
         listView.setAdapter(new ArrayAdapter<>(this,
@@ -56,6 +62,12 @@ public class TestRxjava2Activity extends Activity {
         mDatas.add("test1");
         mDatas.add("test2");
         mDatas.add("test3");
+        mDatas.add("test4");
+        mDatas.add("test5");
+        mDatas.add("test6");
+        mDatas.add("test7");
+        mDatas.add("test8");
+        mDatas.add("test9");
         return mDatas;
     }
 
@@ -106,6 +118,8 @@ public class TestRxjava2Activity extends Activity {
         }
     }
 
+    // call by reflect
+    @SuppressWarnings("unused")
     private void test3() {
         Observable<Integer> observable = Observable.create(e -> {
             e.onNext(1);
@@ -119,25 +133,183 @@ public class TestRxjava2Activity extends Activity {
         Observer<Integer> observer = new Observer<Integer>() {
             @Override
             public void onSubscribe(Disposable d) {
-                System.out.println("onSubscribe: ");
+                logger.info("onSubscribe: ");
             }
 
             @Override
             public void onNext(Integer value) {
-                System.out.println("onNext: " + value);
+                logger.info("onNext: " + value);
             }
 
             @Override
             public void onError(Throwable e) {
-                System.out.println("onError: ");
+                logger.info("onError: ");
             }
 
             @Override
             public void onComplete() {
-                System.out.println("onComplete: All Done");
+                logger.info("onComplete: All Done");
             }
         };
 
         observable.subscribe(observer);
     }
+
+    // call by reflect
+    @SuppressWarnings("unused")
+    private void test4() {
+        Observable<Integer> observable = Observable.create(e -> {
+            logger.info("Observable thread is : {}", Thread.currentThread().getName());
+            logger.info("emit 1");
+            e.onNext(1);
+        });
+        Consumer<Integer> consumer = (integer -> {
+            logger.info("Observable thread is : {}", Thread.currentThread().getName());
+            logger.info("onNext: {}", integer);
+        });
+        observable.subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(consumer);
+    }
+
+    //map
+    @SuppressWarnings("unused")
+    private void test5() {
+        Observable.create(e -> {
+            e.onNext(1);
+            e.onNext(2);
+            e.onNext(3);
+        }).map(integer -> "This is result " + integer)
+                .subscribe(s -> logger.info(s));
+    }
+
+    //FlatMap
+    @SuppressWarnings("unused")
+    private void test6() {
+        Observable.create(e -> {
+            e.onNext(1);
+            e.onNext(2);
+            e.onNext(3);
+        }).flatMap(integer -> {
+            final List<String> list = new ArrayList<>();
+            for (int i = 0; i < 3; i++) {
+                list.add("I am value " + integer);
+            }
+            return Observable.fromIterable(list).delay(10, TimeUnit.MICROSECONDS);
+        }).subscribe(s -> logger.info(s));
+    }
+
+    //concatMap
+    @SuppressWarnings("unused")
+    private void test7() {
+        Observable.create(e -> {
+            e.onNext(1);
+            e.onNext(2);
+            e.onNext(3);
+        }).concatMap(integer -> {
+            final List<String> list = new ArrayList<>();
+            for (int i = 0; i < 3; i++) {
+                list.add("I am value " + integer);
+            }
+            return Observable.fromIterable(list).delay(10, TimeUnit.MICROSECONDS);
+        }).subscribe(s -> logger.info(s));
+    }
+
+    // zip
+    @SuppressWarnings("unused")
+    private void test8() {
+        Observable<Integer> observable1 = Observable.create((ObservableOnSubscribe<Integer>) e -> {
+            logger.info("emit 1");
+            e.onNext(1);
+
+            logger.info("emit 2");
+            e.onNext(2);
+
+            logger.info("emit 3");
+            e.onNext(3);
+
+            logger.info("emit 4");
+            e.onNext(4);
+
+            logger.info("emit complete1");
+            e.onComplete();
+        }).subscribeOn(Schedulers.io());
+
+        Observable<String> observable2 = Observable.create((ObservableOnSubscribe<String>) e -> {
+            logger.info("emit A");
+            e.onNext("A");
+
+            logger.info("emit B");
+            e.onNext("B");
+
+            logger.info("emit C");
+            e.onNext("C");
+
+            logger.info("emit complete2");
+            e.onComplete();
+        }).subscribeOn(Schedulers.io());
+        Observable.zip(observable1, observable2, (integer, s) -> integer + s)
+                .subscribe(new Observer<String>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        logger.info("onSubscribe");
+                    }
+
+                    @Override
+                    public void onNext(String value) {
+                        logger.info("onNext: " + value);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        logger.info("onError");
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        logger.info("onComplete");
+                    }
+                });
+    }
+
+    // flowable
+    @SuppressWarnings("unused")
+    private void test9() {
+        Flowable<Integer> upstream = Flowable.create(e -> {
+            logger.info("current requested: " + e.requested());
+            logger.info("emit 1");
+            e.onNext(1);
+            logger.info("emit 2");
+            e.onNext(2);
+            logger.info("emit 3");
+            e.onNext(3);
+            logger.info("emit complete");
+            e.onComplete();
+        }, BackpressureStrategy.ERROR);
+
+        Subscriber<Integer> downstrem = new Subscriber<Integer>() {
+            @Override
+            public void onSubscribe(Subscription s) {
+                logger.info("onSubscribe");
+                s.request(Long.MAX_VALUE);
+            }
+
+            @Override
+            public void onNext(Integer integer) {
+                logger.info("onNext: " + integer);
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                logger.error("onError: {}", t);
+            }
+
+            @Override
+            public void onComplete() {
+                logger.info("onComplete");
+            }
+        };
+        upstream.subscribe(downstrem);
+    }
+
 }

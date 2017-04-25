@@ -26,7 +26,6 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.jar.Manifest;
 
 import common.CommonAcitivity;
 import common.constants.IntentC;
@@ -38,10 +37,11 @@ import common.constants.IntentC;
 @Router(IntentC.INDEX)
 public class IndexActivity extends CommonAcitivity {
     private static final int PERMISSION_CODE_SD = 0x0010;
-    @SuppressWarnings("constantname")
-    private static final Logger logger = LoggerFactory.getLogger(IndexActivity.class);
+    @SuppressWarnings("membername")
+    private Logger logger;
     @Override
     protected void initView() {
+        logger = LoggerFactory.getLogger(IndexActivity.class);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (PackageManager.PERMISSION_GRANTED
                     != PermissionChecker.checkCallingOrSelfPermission(this,
