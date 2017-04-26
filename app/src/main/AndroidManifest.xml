@@ -41,6 +41,7 @@
             android:exported="false"
             />
         <activity android:name=".test.rxjava2.TestRxjava2Activity"/>
+        <activity android:name=".test.itemdrag.TestItemDragActivity"/>
     </application>
 
 </manifest>

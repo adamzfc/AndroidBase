@@ -13,6 +13,7 @@ import com.adamzfc.androidbase.test.camera.TestCameraActivity;
 import com.adamzfc.androidbase.test.drawable.TestDrawableActivity;
 import com.adamzfc.androidbase.test.event.TestEventActivity;
 import com.adamzfc.androidbase.test.fragment.TestFragmentActivity;
+import com.adamzfc.androidbase.test.itemdrag.TestItemDragActivity;
 import com.adamzfc.androidbase.test.labelview.TestLabelViewActivity;
 import com.adamzfc.androidbase.test.magicfloat.TestMagicFloatViewActivity;
 import com.adamzfc.androidbase.test.rxjava2.TestRxjava2Activity;
@@ -61,7 +62,8 @@ public class IndexActivity extends CommonAcitivity {
         datas.add(new IndexItem("TestCamera", TestCameraActivity.class));
         datas.add(new IndexItem("TestFragment", TestFragmentActivity.class));
         datas.add(new IndexItem("TestRxjava2", TestRxjava2Activity.class));
-        BaseRecyclerAdapter<IndexItem> adapter = new BaseRecyclerAdapter<IndexItem>(this, datas) {
+        datas.add(new IndexItem("TestItemDrag", TestItemDragActivity.class));
+        BaseRecyclerAdapter<IndexItem, BaseRecyclerHolder> adapter = new BaseRecyclerAdapter<IndexItem, BaseRecyclerHolder>(this, datas) {
             @Override
             protected void bindData(BaseRecyclerHolder holder, int position, IndexItem indexItem) {
                 Button button = holder.getButton(R.id.button);
