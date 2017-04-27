@@ -18,6 +18,7 @@ import com.adamzfc.androidbase.test.labelview.TestLabelViewActivity;
 import com.adamzfc.androidbase.test.magicfloat.TestMagicFloatViewActivity;
 import com.adamzfc.androidbase.test.rxjava2.TestRxjava2Activity;
 import com.adamzfc.androidbase.test.slide.TestSlideActivity;
+import com.adamzfc.androidbase.test.sqlite.TestDbActivity;
 import com.adamzfc.base.BaseRecyclerAdapter;
 import com.adamzfc.base.BaseRecyclerHolder;
 import com.adamzfc.router.annotation.Router;
@@ -63,6 +64,8 @@ public class IndexActivity extends CommonAcitivity {
         datas.add(new IndexItem("TestFragment", TestFragmentActivity.class));
         datas.add(new IndexItem("TestRxjava2", TestRxjava2Activity.class));
         datas.add(new IndexItem("TestItemDrag", TestItemDragActivity.class));
+        datas.add(new IndexItem("TestDb", TestDbActivity.class));
+
         BaseRecyclerAdapter<IndexItem> adapter = new BaseRecyclerAdapter<IndexItem>(this, datas) {
             @Override
             protected void bindData(BaseRecyclerHolder holder, int position, IndexItem indexItem) {
