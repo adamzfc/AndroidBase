@@ -1,48 +1,59 @@
 package com.adamzfc.androidbase.test.itemdrag;
 
-import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-import com.adamzfc.base.BaseRecyclerAdapter;
-import com.adamzfc.base.BaseRecyclerHolder;
-
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * Created by adamzfc on 4/26/17.
  */
 
-public class ItemDragRecyclerAdapter extends BaseRecyclerAdapter<String, ItemDragRecyclerHolder> implements ItemTouchHelperAdapter {
+public class ItemDragRecyclerAdapter extends RecyclerView.Adapter<ItemDragRecyclerHolder> implements ItemTouchHelperAdapter {
 
+    private static final String[] STRINGS = new String[] {
+            "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"
+    };
 
-    public ItemDragRecyclerAdapter(Context context, List<String> list) {
-        super(context, list);
-    }
+    private List<String> mDatas = new ArrayList<>();
 
-    @Override
-    protected void bindData(ItemDragRecyclerHolder holder, int position, String s) {
-        holder.getTextView(android.R.id.text1).setText(s);
-    }
-
-    @Override
-    protected int getItemLayoutId(int viewType) {
-        return android.R.layout.simple_list_item_1;
+    public ItemDragRecyclerAdapter() {
+        mDatas.addAll(Arrays.asList(STRINGS));
     }
 
     @Override
     public void onItemMove(int fromPosition, int toPosition) {
-        String prev = mData.remove(fromPosition);
-        mData.add(toPosition > fromPosition ? toPosition - 1 : toPosition, prev);
+        String prev = mDatas.remove(fromPosition);
+        mDatas.add(toPosition > fromPosition ? toPosition - 1 : toPosition, prev);
         notifyItemMoved(fromPosition, toPosition);
     }
 
     @Override
     public void onItemDismiss(int position) {
-        mData.remove(position);
+        mDatas.remove(position);
         notifyItemRemoved(position);
     }
 
     @Override
-    public void onBindViewHolder(ItemDragRecyclerHolder holder, int position) {
+    public ItemDragRecyclerHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(android.R.layout.simple_list_item_1, parent, false);
+        ItemDragRecyclerHolder itemDragRecyclerHolder =
+                new ItemDragRecyclerHolder(parent.getContext(), view);
+        return itemDragRecyclerHolder;
+    }
 
+    @Override
+    public void onBindViewHolder(ItemDragRecyclerHolder holder, int position) {
+        holder.getTextView(android.R.id.text1).setText(mDatas.get(position));
+    }
+
+    @Override
+    public int getItemCount() {
+        return mDatas.size();
     }
 }

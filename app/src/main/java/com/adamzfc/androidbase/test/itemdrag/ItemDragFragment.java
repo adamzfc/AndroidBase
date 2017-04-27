@@ -3,6 +3,7 @@ package com.adamzfc.androidbase.test.itemdrag;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
@@ -22,13 +23,8 @@ import java.util.List;
 
 public class ItemDragFragment extends Fragment {
 
-    private static final String[] STRINGS = new String[] {
-            "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"
-    };
 
     private ItemTouchHelper mItemTouchHelper;
-
-    private List<String> mDatas;
 
     @Nullable
     @Override
@@ -39,13 +35,12 @@ public class ItemDragFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mDatas = new ArrayList<>();
-        mDatas.addAll(Arrays.asList(STRINGS));
-        ItemDragRecyclerAdapter adapter = new ItemDragRecyclerAdapter(getContext(), mDatas);
+        ItemDragRecyclerAdapter adapter = new ItemDragRecyclerAdapter();
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
         ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(adapter);
         mItemTouchHelper = new ItemTouchHelper(callback);
         mItemTouchHelper.attachToRecyclerView(recyclerView);

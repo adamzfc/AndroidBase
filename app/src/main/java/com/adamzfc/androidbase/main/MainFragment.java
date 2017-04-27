@@ -30,7 +30,7 @@ public class MainFragment extends Fragment implements MainContract.View {
 
     private MainContract.Presenter mPresenter;
     private ItemAdapter mListAdapter;
-    private BaseRecyclerAdapter<MainItem, BaseRecyclerHolder> mAdapter;
+    private BaseRecyclerAdapter<MainItem> mAdapter;
     private List<MainItem> mDatas = new ArrayList<>();
 
     /**
@@ -50,7 +50,7 @@ public class MainFragment extends Fragment implements MainContract.View {
 //        mDatas.add(new MainItem("tttt2"));
 //        mDatas.add(new MainItem("tttttt3"));
         mListAdapter = new ItemAdapter(mDatas);
-        mAdapter = new BaseRecyclerAdapter<MainItem, BaseRecyclerHolder>(getActivity(), mDatas) {
+        mAdapter = new BaseRecyclerAdapter<MainItem>(getActivity(), mDatas) {
             @Override
             protected void bindData(BaseRecyclerHolder holder, int position, MainItem mainItem) {
                 Button name = (Button) holder.getView(R.id.name);

@@ -14,7 +14,7 @@ import java.util.List;
  * Created by adamzfc on 3/13/17.
  */
 
-public abstract class BaseRecyclerAdapter<T, H extends BaseRecyclerHolder> extends RecyclerView.Adapter<H> {
+public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseRecyclerHolder> {
     protected final List<T> mData;
     protected final Context mContext;
     protected LayoutInflater mInflater;
@@ -29,9 +29,8 @@ public abstract class BaseRecyclerAdapter<T, H extends BaseRecyclerHolder> exten
     }
 
     @Override
-    public H onCreateViewHolder(ViewGroup parent, int viewType) {
-        @SuppressWarnings("unchecked")
-        final H holder = (H) new BaseRecyclerHolder(mContext,
+    public BaseRecyclerHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        final BaseRecyclerHolder holder = new BaseRecyclerHolder(mContext,
                 mInflater.inflate(getItemLayoutId(viewType), parent, false));
         if (mClickListener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -54,7 +53,7 @@ public abstract class BaseRecyclerAdapter<T, H extends BaseRecyclerHolder> exten
     }
 
     @Override
-    public void onBindViewHolder(H holder, int position) {
+    public void onBindViewHolder(BaseRecyclerHolder holder, int position) {
         bindData(holder, position, mData.get(position));
     }
 
@@ -81,7 +80,7 @@ public abstract class BaseRecyclerAdapter<T, H extends BaseRecyclerHolder> exten
         mLongClickListener = listener;
     }
 
-    protected abstract void bindData(H holder, int position, T t);
+    protected abstract void bindData(BaseRecyclerHolder holder, int position, T t);
 
     protected abstract @LayoutRes int getItemLayoutId(int viewType);
 

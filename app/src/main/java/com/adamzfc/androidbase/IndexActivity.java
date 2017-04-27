@@ -63,7 +63,7 @@ public class IndexActivity extends CommonAcitivity {
         datas.add(new IndexItem("TestFragment", TestFragmentActivity.class));
         datas.add(new IndexItem("TestRxjava2", TestRxjava2Activity.class));
         datas.add(new IndexItem("TestItemDrag", TestItemDragActivity.class));
-        BaseRecyclerAdapter<IndexItem, BaseRecyclerHolder> adapter = new BaseRecyclerAdapter<IndexItem, BaseRecyclerHolder>(this, datas) {
+        BaseRecyclerAdapter<IndexItem> adapter = new BaseRecyclerAdapter<IndexItem>(this, datas) {
             @Override
             protected void bindData(BaseRecyclerHolder holder, int position, IndexItem indexItem) {
                 Button button = holder.getButton(R.id.button);
