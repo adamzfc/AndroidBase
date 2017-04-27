@@ -31,6 +31,7 @@ import java.util.List;
 
 import common.CommonAcitivity;
 import common.constants.IntentC;
+import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
 
 /**
  * Index
@@ -84,6 +85,7 @@ public class IndexActivity extends CommonAcitivity {
         };
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+        OverScrollDecoratorHelper.setUpOverScroll(recyclerView, OverScrollDecoratorHelper.ORIENTATION_VERTICAL);
     }
 
     @Override

@@ -60,4 +60,6 @@ dependencies {
         exclude group: 'com.google.android', module: 'android'
     }
 
+    compile 'me.everything:overscroll-decor-android:1.0.4'
+
 }
