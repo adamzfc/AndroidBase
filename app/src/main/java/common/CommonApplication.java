@@ -1,5 +1,6 @@
 package common;
 
+import com.adamzfc.androidbase.test.skin.SkinManager;
 import com.adamzfc.base.BaseApplication;
 
 /**
@@ -7,4 +8,9 @@ import com.adamzfc.base.BaseApplication;
  */
 
 public class CommonApplication extends BaseApplication {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        SkinManager.getInstance().init(this);
+    }
 }
