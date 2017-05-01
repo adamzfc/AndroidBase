@@ -103,8 +103,11 @@ public class BaseSkinActivity extends AppCompatActivity implements ISkinChangeLi
             SkinManager.getInstance().addSkinView(this, skinViews);
         }
         skinViews.add(new SkinView(view, skinAttrs));
-        // 当前是否需要自动换肤，如果需要，则换肤
 
+        // 当前是否需要自动换肤，如果需要，则换肤
+        if (SkinManager.getInstance().needChangeSkin()) {
+            SkinManager.getInstance().skinChange(this);
+        }
     }
 
     private View createViewFromTag(Context context, String name, AttributeSet attrs) {
