@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import com.adamzfc.androidbase.main.MainActivity;
 import com.adamzfc.androidbase.test.camera.TestCameraActivity;
+import com.adamzfc.androidbase.test.customerview.TestCustomerViewActivity;
 import com.adamzfc.androidbase.test.drawable.TestDrawableActivity;
 import com.adamzfc.androidbase.test.event.TestEventActivity;
 import com.adamzfc.androidbase.test.fragment.TestFragmentActivity;
@@ -66,6 +67,7 @@ public class IndexActivity extends CommonAcitivity {
         datas.add(new IndexItem("TestRxjava2", TestRxjava2Activity.class));
         datas.add(new IndexItem("TestItemDrag", TestItemDragActivity.class));
         datas.add(new IndexItem("TestDb", TestDbActivity.class));
+        datas.add(new IndexItem("CustomerView", TestCustomerViewActivity.class));
 
         BaseRecyclerAdapter<IndexItem> adapter = new BaseRecyclerAdapter<IndexItem>(this, datas) {
             @Override
