@@ -45,6 +45,7 @@
         <activity android:name=".test.itemdrag.TestItemDragActivity"/>
         <activity android:name=".test.sqlite.TestDbActivity"/>
         <activity android:name=".test.customerview.TestCustomerViewActivity"/>
+        <activity android:name=".test.customerview.TestCustomerViewActivity2"/>
     </application>
 
 </manifest>
