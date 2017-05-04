@@ -21,6 +21,7 @@ import com.adamzfc.androidbase.test.magicfloat.TestMagicFloatViewActivity;
 import com.adamzfc.androidbase.test.rxjava2.TestRxjava2Activity;
 import com.adamzfc.androidbase.test.slide.TestSlideActivity;
 import com.adamzfc.androidbase.test.sqlite.TestDbActivity;
+import com.adamzfc.androidbase.test.wifip2p.TestWifiP2PActivity;
 import com.adamzfc.base.BaseRecyclerAdapter;
 import com.adamzfc.base.BaseRecyclerHolder;
 import com.adamzfc.router.annotation.Router;
@@ -70,6 +71,7 @@ public class IndexActivity extends CommonAcitivity {
         datas.add(new IndexItem("TestDb", TestDbActivity.class));
         datas.add(new IndexItem("CustomerView", TestCustomerViewActivity.class));
         datas.add(new IndexItem("CustomerView2", TestCustomerViewActivity2.class));
+        datas.add(new IndexItem("WifiP2P", TestWifiP2PActivity.class));
 
         BaseRecyclerAdapter<IndexItem> adapter = new BaseRecyclerAdapter<IndexItem>(this, datas) {
             @Override
