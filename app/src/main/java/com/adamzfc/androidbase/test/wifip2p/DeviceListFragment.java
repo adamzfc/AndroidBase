@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.adamzfc.androidbase.R;
@@ -45,6 +46,12 @@ public class DeviceListFragment extends ListFragment implements WifiP2pManager.P
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mContentView = inflater.inflate(R.layout.fragment_test_device_list, container, false);
         return mContentView;
+    }
+
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        WifiP2pDevice device = (WifiP2pDevice) getListAdapter().getItem(position);
+        ((DeviceActionListener) getActivity()).showDetail(device);
     }
 
     @Override

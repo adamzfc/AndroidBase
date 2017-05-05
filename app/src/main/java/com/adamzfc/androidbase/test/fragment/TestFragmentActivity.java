@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -116,6 +117,7 @@ public class TestFragmentActivity extends FragmentActivity {
         @Override
         public void onListItemClick(ListView l, View v, int position, long id) {
             showDetails(position);
+            Log.d("TitlesFragment", "onListItemClick");
         }
 
         /**

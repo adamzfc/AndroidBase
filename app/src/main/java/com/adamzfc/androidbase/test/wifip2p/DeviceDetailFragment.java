@@ -3,14 +3,21 @@ package com.adamzfc.androidbase.test.wifip2p;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.net.wifi.p2p.WifiP2pDevice;
 import android.net.wifi.p2p.WifiP2pInfo;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.Environment;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.adamzfc.androidbase.R;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -21,12 +28,31 @@ import java.net.Socket;
 
 /**
  * Created by adamzfc on 5/4/17.
+ * https://github.com/ahmontero/wifi-direct-demo
+ * https://developer.android.com/guide/topics/connectivity/wifip2p.html
+ * https://developer.android.com/training/connect-devices-wirelessly/wifi-direct.html
+ * https://android.googlesource.com/platform/development/+/master/samples/WiFiDirectServiceDiscovery/src/com/example/android/wifidirect/discovery/WiFiServiceDiscoveryActivity.java
+ * http://blog.csdn.net/yichigo/article/details/8472570
+ * https://developer.android.com/reference/android/net/wifi/p2p/package-summary.html
  */
 
 public class DeviceDetailFragment extends Fragment implements WifiP2pManager.ConnectionInfoListener {
+    private static final String TAG = "Detail";
     @Override
     public void onConnectionInfoAvailable(WifiP2pInfo info) {
 
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_test_wifi_detail, container, false);
+        view.setBackgroundResource(android.R.color.white);
+        return view;
+    }
+
+    public void changeView(WifiP2pDevice device) {
+        Log.d(TAG, device.toString());
     }
 
     public static class FileServerAsyncTask extends AsyncTask {
