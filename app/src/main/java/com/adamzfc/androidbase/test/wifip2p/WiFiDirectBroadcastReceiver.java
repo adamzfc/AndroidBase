@@ -46,14 +46,17 @@ public class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
                 // Wi-Fi P2P is not enabled
             }
         } else if (WifiP2pManager.WIFI_P2P_PEERS_CHANGED_ACTION.equals(action)) {
+            Log.d(TAG, "WIFI_P2P_PEERS_CHANGED_ACTION");
             // Call WifiP2pManager.requestPeers() to get a list of current peers
             if (mManager != null) {
                 mManager.requestPeers(mChannel, (WifiP2pManager.PeerListListener) mActivity
                         .getSupportFragmentManager().findFragmentById(R.id.device_list));
             }
         } else if (WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION.equals(action)) {
+            Log.d(TAG, "WIFI_P2P_CONNECTION_CHANGED_ACTION");
             // Respond to new connection or disconnections
             if (mManager == null) {
+                Log.d(TAG, "mManager null");
                 return;
             }
             NetworkInfo networkInfo = intent.getParcelableExtra(WifiP2pManager.EXTRA_NETWORK_INFO);
@@ -61,10 +64,11 @@ public class WiFiDirectBroadcastReceiver extends BroadcastReceiver {
                 DeviceDetailFragment fragment = (DeviceDetailFragment) mActivity.getSupportFragmentManager()
                         .findFragmentByTag("detail");
                 if (fragment != null) {
-
+                    mManager.requestConnectionInfo(mChannel, fragment);
                 }
             }
         } else if (WifiP2pManager.WIFI_P2P_THIS_DEVICE_CHANGED_ACTION.equals(action)) {
+            Log.d(TAG, "WIFI_P2P_THIS_DEVICE_CHANGED_ACTION");
             // Respond to this device's wifi state changing
         }
 

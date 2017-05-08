@@ -3,11 +3,14 @@ package com.adamzfc.androidbase.test.wifip2p;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.IntentFilter;
+import android.net.wifi.p2p.WifiP2pConfig;
 import android.net.wifi.p2p.WifiP2pDevice;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
+import android.support.annotation.AnyThread;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 
 import com.adamzfc.androidbase.R;
 
@@ -17,7 +20,8 @@ import com.adamzfc.androidbase.R;
 
 public class TestWifiP2PActivity extends FragmentActivity implements DeviceActionListener {
 
-    private static final String KEY_DEVICE = "key_device";
+    public static final String KEY_DEVICE = "key_device";
+    private static final String TAG = "TestWifiP2PActivity";
     IntentFilter mIntentFilter;
 
     WifiP2pManager mManager;
@@ -66,12 +70,15 @@ public class TestWifiP2PActivity extends FragmentActivity implements DeviceActio
 
     @Override
     public void showDetail(WifiP2pDevice device) {
+        DeviceListFragment listFragment = (DeviceListFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.device_list);
         DeviceDetailFragment fragment = (DeviceDetailFragment) getSupportFragmentManager()
                 .findFragmentByTag("detail");
         if (fragment != null) {
             if (!fragment.isAdded()) {
                 getSupportFragmentManager().beginTransaction()
                         .add(android.R.id.content, fragment, "detail")
+                        .hide(listFragment)
                         .addToBackStack(null).commit();
             }
             fragment.changeView(device);
@@ -82,8 +89,42 @@ public class TestWifiP2PActivity extends FragmentActivity implements DeviceActio
             detailFragment.setArguments(bundle);
             getSupportFragmentManager().beginTransaction()
                     .replace(android.R.id.content, detailFragment, "detail")
+                    .hide(listFragment)
                     .addToBackStack(null).commit();
         }
+    }
+
+    @Override
+    public void connect(WifiP2pConfig config) {
+        mManager.connect(mChannel, config, new WifiP2pManager.ActionListener() {
+            @Override
+            public void onSuccess() {
+                Log.d(TAG, "connect success");
+            }
+
+            @Override
+            public void onFailure(int reason) {
+                Log.d(TAG, "Connect failed");
+            }
+        });
+    }
+
+    @Override
+    public void disconnect() {
+        DeviceDetailFragment fragment = (DeviceDetailFragment) getSupportFragmentManager()
+                .findFragmentByTag("detail");
+        getSupportFragmentManager().popBackStack();
+        mManager.removeGroup(mChannel, new WifiP2pManager.ActionListener() {
+            @Override
+            public void onSuccess() {
+                Log.d(TAG, "disconnect success");
+            }
+
+            @Override
+            public void onFailure(int reason) {
+                Log.d(TAG, "disconnect filaed" + reason);
+            }
+        });
     }
 
 }

@@ -51,6 +51,7 @@
         <activity android:name=".test.customerview.TestCustomerViewActivity"/>
         <activity android:name=".test.customerview.TestCustomerViewActivity2"/>
         <activity android:name=".test.wifip2p.TestWifiP2PActivity"/>
+        <service android:name=".test.wifip2p.FileTransferService" android:enabled="true"/>
         <activity android:name=".test.jni.TestJniActivity"/>
     </application>
 
