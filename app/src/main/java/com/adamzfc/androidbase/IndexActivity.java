@@ -19,6 +19,7 @@ import com.adamzfc.androidbase.test.itemdrag.TestItemDragActivity;
 import com.adamzfc.androidbase.test.jni.TestJniActivity;
 import com.adamzfc.androidbase.test.labelview.TestLabelViewActivity;
 import com.adamzfc.androidbase.test.magicfloat.TestMagicFloatViewActivity;
+import com.adamzfc.androidbase.test.multicast.TestMulticastActivity;
 import com.adamzfc.androidbase.test.rxjava2.TestRxjava2Activity;
 import com.adamzfc.androidbase.test.slide.TestSlideActivity;
 import com.adamzfc.androidbase.test.sqlite.TestDbActivity;
@@ -74,6 +75,7 @@ public class IndexActivity extends CommonAcitivity {
         datas.add(new IndexItem("CustomerView2", TestCustomerViewActivity2.class));
         datas.add(new IndexItem("WifiP2P", TestWifiP2PActivity.class));
         datas.add(new IndexItem("Jni test", TestJniActivity.class));
+        datas.add(new IndexItem("Multicast", TestMulticastActivity.class));
 
         BaseRecyclerAdapter<IndexItem> adapter = new BaseRecyclerAdapter<IndexItem>(this, datas) {
             @Override
