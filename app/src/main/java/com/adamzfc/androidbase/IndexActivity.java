@@ -15,6 +15,7 @@ import com.adamzfc.androidbase.test.customerview.TestCustomerViewActivity2;
 import com.adamzfc.androidbase.test.drawable.TestDrawableActivity;
 import com.adamzfc.androidbase.test.event.TestEventActivity;
 import com.adamzfc.androidbase.test.fragment.TestFragmentActivity;
+import com.adamzfc.androidbase.test.ipscanner.TestIpScannerActivity;
 import com.adamzfc.androidbase.test.itemdrag.TestItemDragActivity;
 import com.adamzfc.androidbase.test.jni.TestJniActivity;
 import com.adamzfc.androidbase.test.labelview.TestLabelViewActivity;
@@ -76,6 +77,7 @@ public class IndexActivity extends CommonAcitivity {
         datas.add(new IndexItem("WifiP2P", TestWifiP2PActivity.class));
         datas.add(new IndexItem("Jni test", TestJniActivity.class));
         datas.add(new IndexItem("Multicast", TestMulticastActivity.class));
+        datas.add(new IndexItem("IpScanner", TestIpScannerActivity.class));
 
         BaseRecyclerAdapter<IndexItem> adapter = new BaseRecyclerAdapter<IndexItem>(this, datas) {
             @Override

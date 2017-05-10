@@ -55,6 +55,7 @@
         <service android:name=".test.wifip2p.FileTransferService" android:enabled="true"/>
         <activity android:name=".test.jni.TestJniActivity"/>
         <activity android:name=".test.multicast.TestMulticastActivity"/>
+        <activity android:name=".test.ipscanner.TestIpScannerActivity"/>
     </application>
 
 </manifest>
