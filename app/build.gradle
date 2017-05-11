@@ -64,7 +64,8 @@ dependencies {
         // workaround issue #73
         exclude group: 'com.google.android', module: 'android'
     }
-
+    // zxing
+    compile 'com.google.zxing:core:3.3.0'
     compile 'me.everything:overscroll-decor-android:1.0.4'
 
 }
