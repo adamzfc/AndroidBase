@@ -1,7 +1,6 @@
 package com.adamzfc.androidbase.test.qrcode;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
@@ -16,9 +15,5 @@ public class TestQRCodeActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_qrcode);
-        findViewById(R.id.bt_scan).setOnClickListener(v -> {
-//            Intent intent = new Intent(this, CaptureActivity.class);
-//            startActivityForResult(intent, 0);
-        });
     }
 }
